@@ -1,0 +1,36 @@
+https://app.pluralsight.com/library/courses/large-scale-javascript/table-of-contents
+
+
+Before NodeJS server are Synchronous in nature (the work like an ATM, every requester has to wait till the previous is finished).
+
+
+Non-blocking I/O and event callback
+===================================
+
+In contrast NodeJS is more like a coffe Shop. You make your request in one line (that's all) and then move to another line to wait for the response.
+The order of responses in unordered. the responses are given according to how fast they can be served.
+
+NodeJS more scalable
+===============
+
+Non-blocking behavior can be given in JAVA & .NET through threads. But it has to be configured.
+In contrast Non-blocking is the default behaviou out of the box in NodeJS.
+
+Supports scale-out. NJS Has notion of scale-out, but each Node process itself is single threaded. This means a single
+thread, or a single execution of node, can handle sometimes many more requests thn their other counterparts,
+but again, some of that has to do with the programming model, not the efficiency of Node itself,
+but Node on its own is single threaded, so it expects that if you need to scale it out you're going to need
+to scale it out vertically and horizontally.
+As we've said, the key to the scalability tends to be that a thread is able to answer other client
+requests while you're waiting on other operations that would normally block, like I/O.	
+This means when you want to scale Node we're going to do ...
+When you're scaling Node you have to think about how to scale your Datastore (Memcache et al.)
+
+You're also going to need to deal with scaling out, having multiple instances of Node run in a single box
+or even how to do that within like a web garden or a web Farm.
+
+You also have to think about geographic scaling. How do you get into other markets so everyone isn't
+travelling the entire globe to get to your server somewhere in the datacenter 4 blocks from your business?
+
+You´re also going to need  to think about load balancing. How do you keep the instances and even 	the 
+individual boxes from being overwhelmed by getting stuck with certain types of requests.
